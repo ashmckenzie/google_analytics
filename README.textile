@@ -1,0 +1,47 @@
+h1. GoogleAnalytics
+
+Google Analytics Javascript plugin implements the following methods which
+generate the necessary GA javascript (minus the script tags): -
+
+* <pre>ga_generate_js('YOUR-UA')</pre> Produces new async style GA javascript: -
+
+<pre><code>var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'YOUR-UA']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script');
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
+      'http://www') + '.google-analytics.com/ga.js';
+  ga.setAttribute('async', 'true');
+  document.documentElement.firstChild.appendChild(ga);
+})();
+</code></pre>
+
+* <pre>ga_generate_non_async_js('YOUR-UA')</pre> Produces the non async style GA javascript: -
+
+<pre><code>var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+try {
+	var pageTracker = _gat._getTracker("YOUR-UA");
+	pageTracker._trackPageview();
+} catch(err) {}
+</code></pre>
+
+h1. Example
+
+Inside you app/views/layouts/application.html.erb (using jQuery): -
+
+<pre><code><% javascript_tag :defer => 'defer' do %>
+  $(document).ready(function() {
+    <%= yield :script %>
+    <%= ga_generate_js('UA-1234-5') %>
+  });
+<% end %>
+</code></pre>
+		
+h1. Links
+
+Async GA tracking - "http://googlecode.blogspot.com/2009/12/google-analytics-launches-asynchronous.html":http://googlecode.blogspot.com/2009/12/google-analytics-launches-asynchronous.html
+
+Copyright (c) 2009 [Ash McKenzie], released under the MIT license
