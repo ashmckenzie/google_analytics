@@ -39,7 +39,7 @@ Inside you app/views/layouts/application.html.erb (using jQuery): -
   });
 <% end %>
 </code></pre>
-		
+
 h1. Links
 
 Async GA tracking - "http://googlecode.blogspot.com/2009/12/google-analytics-launches-asynchronous.html":http://googlecode.blogspot.com/2009/12/google-analytics-launches-asynchronous.html
