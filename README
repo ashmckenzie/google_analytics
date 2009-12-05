@@ -1,0 +1,14 @@
+GoogleAnalytics
+===============
+
+Google Analytics Javascript plugin implements the generate_js() method which
+can be used to display the required GA javascript snippet.
+
+
+Example
+=======
+
+GoogleAnalytics.generate_js('YOUR-UA-HERE')
+
+
+Copyright (c) 2009 [Ash McKenzie], released under the MIT license
